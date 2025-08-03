@@ -1,0 +1,14 @@
+.custom-navbar {
+  background-color: #1a1a2e;
+  padding: 12px 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.custom-navbar a {
+  color: #f8f9fa;
+  font-weight: 500;
+}
+
+.custom-navbar a:hover {
+  color: #ffcc00;
+}

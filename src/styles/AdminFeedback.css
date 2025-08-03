@@ -1,0 +1,53 @@
+.admin-feedback-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  max-width: 800px;
+  margin: auto;
+}
+
+.admin-feedback-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.admin-feedback-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  color: #fff;
+  position: relative;
+}
+
+.admin-feedback-card p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+  color: #fff;
+}
+
+.admin-feedback-empty {
+  color: #ccc;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+.delete-button {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c62828;
+}

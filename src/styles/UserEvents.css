@@ -1,0 +1,30 @@
+.user-events-page {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 40px;
+  color: white;
+}
+
+.user-events-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.user-events-heading {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.user-events-empty {
+  text-align: center;
+  font-style: italic;
+  color: #ccc;
+}

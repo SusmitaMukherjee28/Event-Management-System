@@ -1,0 +1,52 @@
+/* App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url('./assets/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+/* Blurred background layer */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: inherit;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: -1;
+  background-color: rgba(198, 0, 0, 0.4); /* optional: darken for better contrast */
+}
+
+/* Make sure root content is above the blur */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional: Reset container padding */
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Button customization */
+.btn-custom {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+/* Footer style */
+.footer {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+} 

@@ -1,0 +1,39 @@
+/* Feedback list container */
+.feedback-list {
+  list-style: none;
+  padding: 0;
+  color: white; /* ✅ Make all feedback text white */
+}
+
+/* Individual feedback item */
+.feedback-item {
+  background-color: rgba(255, 255, 255, 0.1); /* optional: semi-transparent bg */
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  color: white; /* ✅ Ensure text inside each item is white */
+}
+.feedback-form-bg {
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 2rem;
+  position: relative;
+}
+
+.feedback-form-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4); /* ✅ dark overlay */
+  z-index: 0;
+}
+
+.feedback-form-container {
+  position: relative;
+  z-index: 1; /* Bring content above overlay */ 
+  color: white;
+}
