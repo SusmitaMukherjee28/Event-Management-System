@@ -1,16 +1,16 @@
-# 🎉 FunFusion - Event Management System
+#  FunFusion - Event Management System
 
-## 🗒️About
+## 🗒About
 
 **FunFusion** is a full-stack event management system where users can explore and book events while administrators manage event listings, view bookings, and handle user feedback.
 
 **This project is built using:**
-- ⚛️ **React.js ,Bootstrap ,Html, Css ** for the frontend
-- 🟢 **Node.js + Express** for the backend API
-- 🛢 **MySQL** for the database
+-  **React.js + Html + CSS + Axios** for the frontend
+-  **Node.js + Express** for the backend API
+-  **MySQL** for the database
 ---
 
-## ✨ Features
+## Features
 
 ### User Side
 - Browse upcoming events
@@ -26,7 +26,7 @@
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 _<img width="1920" height="1080" alt="Screenshot (388)" src="https://github.com/user-attachments/assets/c4edff9e-7de9-4bea-be62-f845d400eb14" />
 <img width="1920" height="1080" alt="Screenshot (380)" src="https://github.com/user-attachments/assets/1eecc3bf-d02f-489a-9eea-4fab90a9ffd1" />
@@ -36,20 +36,13 @@ _<img width="1920" height="1080" alt="Screenshot (388)" src="https://github.com/
 
 
 
-
-
-
-
-
-
-
 ---
 
-## 🏗 Tech Stack
+##  Tech Stack
 
 | Layer       | Tech Used             |
 |-------------|------------------------|
-| Frontend    | React.js,Bootstrap, Html, CSS |
+| Frontend    | React.js, Html, CSS |
 | Backend     | Node.js, Express.js    |
 | Database    | MySQL                  |
 | Deployment  | Localhost / Your host  |
