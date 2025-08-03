@@ -56,5 +56,3 @@ _<img width="1920" height="1080" alt="Screenshot (388)" src="https://github.com/
 
 ---
 
-
-node index.js
