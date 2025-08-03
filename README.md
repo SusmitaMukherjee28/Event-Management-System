@@ -1,6 +1,6 @@
 #  FunFusion - Event Management System
 
-## 🗒About
+## About
 
 **FunFusion** is a full-stack event management system where users can explore and book events while administrators manage event listings, view bookings, and handle user feedback.
 
@@ -34,14 +34,14 @@
 | GET    | `/events`    | Get all events           |
 | POST   | `/events`    | Add new event (admin)    |
 
-### 🎟️ Bookings
+###  Bookings
 
 | Method | Endpoint     | Description              |
 |--------|--------------|--------------------------|
 | GET    | `/bookings`  | Get all bookings (admin) |
 | POST   | `/bookings`  | Book tickets (user)      |
 
-### 💬 Feedback
+###  Feedback
 
 | Method   | Endpoint          | Description                   |
 |----------|-------------------|-------------------------------|
