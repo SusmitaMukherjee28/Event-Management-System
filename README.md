@@ -8,7 +8,6 @@
 - ⚛️ **React.js** for the frontend
 - 🟢 **Node.js + Express** for the backend API
 - 🛢 **MySQL** for the database
-
 ---
 
 ## ✨ Features
