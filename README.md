@@ -5,7 +5,7 @@
 **FunFusion** is a full-stack event management system where users can explore and book events while administrators manage event listings, view bookings, and handle user feedback.
 
 **This project is built using:**
-- ⚛️ **React.js** for the frontend
+- ⚛️ **React.js ,Bootstrap ,Html, Css ** for the frontend
 - 🟢 **Node.js + Express** for the backend API
 - 🛢 **MySQL** for the database
 ---
@@ -49,7 +49,7 @@ _<img width="1920" height="1080" alt="Screenshot (388)" src="https://github.com/
 
 | Layer       | Tech Used             |
 |-------------|------------------------|
-| Frontend    | React.js, Tailwind CSS |
+| Frontend    | React.js,Bootstrap, Html, CSS |
 | Backend     | Node.js, Express.js    |
 | Database    | MySQL                  |
 | Deployment  | Localhost / Your host  |
