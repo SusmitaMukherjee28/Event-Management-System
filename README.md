@@ -1,4 +1,4 @@
-# FUNFUSION - Event-Management-System
+# FUNFUSION - An Event Management System
 
 A full stack web application that allows useres to explore,book events, secure payments while enabling admin control over event listing, booking and user's feedback.
 
