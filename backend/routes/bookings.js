@@ -1,15 +1,15 @@
-const express = require('express');
+const express = require('express'); 
 const router = express.Router();
 const db = require('../config/db'); // ✅ DB connection
 
 console.log('📦 bookings.js route file loaded');
 
-// 🔍 Test route to confirm router is active
+// 🔍 Test route
 router.get('/test', (req, res) => {
   res.json({ message: '✅ GET /api/bookings/test works!' });
 });
 
-// 📥 GET all bookings (basic)
+// 📥 Basic GET all bookings
 router.get('/', (req, res) => {
   console.log('🔥 GET /api/bookings triggered');
   const sql = 'SELECT * FROM bookings';
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// ✅ GET all bookings with full event details
+// ✅ GET all bookings with event details
 router.get('/details', (req, res) => {
   console.log('🔥 GET /api/bookings/details triggered');
   const sql = `
@@ -51,7 +51,7 @@ router.get('/details', (req, res) => {
   });
 });
 
-// ✅ Total tickets booked per event
+// ✅ GET ticket count per event
 router.get('/ticket-counts', (req, res) => {
   console.log('🎟️ GET /api/bookings/ticket-counts triggered');
   const sql = `
@@ -75,7 +75,7 @@ router.get('/ticket-counts', (req, res) => {
   });
 });
 
-// 📝 POST a new booking
+// 📝 POST new booking
 router.post('/', (req, res) => {
   console.log('📥 Booking received:', req.body);
 
@@ -89,51 +89,70 @@ router.post('/', (req, res) => {
     event_name,
   } = req.body;
 
+  // Basic sanitization and validation
   const ageNum = parseInt(age);
   const ticketsNum = parseInt(tickets);
   const eventIdNum = parseInt(event_id);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   if (
     !eventIdNum ||
     !user_name?.trim() ||
     !user_email?.trim() ||
-    !ageNum ||
+    !emailRegex.test(user_email) ||
+    isNaN(ageNum) || ageNum < 1 ||
     !gender?.trim() ||
-    !ticketsNum ||
+    isNaN(ticketsNum) || ticketsNum < 1 ||
+    ticketsNum > 2 ||
     !event_name?.trim()
   ) {
     console.warn('⚠️ Validation failed:', req.body);
     return res.status(400).json({ error: 'Missing or invalid required fields' });
   }
 
-  if (ticketsNum > 2) {
-    return res.status(400).json({ error: 'Maximum 2 tickets allowed per person' });
-  }
-
-  const sql = `
-    INSERT INTO bookings (event_id, user_name, user_email, age, gender, tickets, event_name)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+  // Optional: Prevent duplicate booking for same email & event
+  const checkSql = `
+    SELECT * FROM bookings WHERE user_email = ? AND event_name = ?
   `;
 
-  const values = [
-    eventIdNum,
-    user_name.trim(),
-    user_email.trim(),
-    ageNum,
-    gender.trim(),
-    ticketsNum,
-    event_name.trim(),
-  ];
-
-  db.query(sql, values, (err, result) => {
-    if (err) {
-      console.error('❌ Error inserting booking:', err);
-      return res.status(500).json({ error: 'Database error' });
+  db.query(checkSql, [user_email.trim(), event_name.trim()], (checkErr, existing) => {
+    if (checkErr) {
+      console.error('❌ Error checking duplicates:', checkErr);
+      return res.status(500).json({ error: 'Database check error' });
     }
 
-    res.status(201).json({
-      message: 'Booking successful',
-      bookingId: result.insertId,
+    if (existing.length > 0) {
+      console.log('⚠️ Duplicate booking detected');
+      return res.status(409).json({ error: 'You have already booked this event' });
+    }
+
+    // Proceed to insert
+    const insertSql = `
+      INSERT INTO bookings (event_id, user_name, user_email, age, gender, tickets, event_name)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    const values = [
+      eventIdNum,
+      user_name.trim(),
+      user_email.trim(),
+      ageNum,
+      gender.trim(),
+      ticketsNum,
+      event_name.trim(),
+    ];
+
+    db.query(insertSql, values, (err, result) => {
+      if (err) {
+        console.error('❌ Error inserting booking:', err);
+        return res.status(500).json({ error: 'Database error' });
+      }
+
+      console.log(`✅ Booking inserted for: ${user_name} (${user_email})`);
+      res.status(201).json({
+        message: 'Booking successful',
+        bookingId: result.insertId,
+      });
     });
   });
 });

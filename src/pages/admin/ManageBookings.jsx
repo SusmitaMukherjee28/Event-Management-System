@@ -1,5 +1,3 @@
-// src/pages/admin/ManageBookings.jsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import backgroundImage from '../../assets/background.jpg';
@@ -67,11 +65,11 @@ const ManageBookings = () => {
               <tbody>
                 {bookings.map((b, index) => (
                   <tr key={b.id || index}>
-                    <td>{b.user_name || 'N/A'}</td>
-                    <td>{b.user_email || '—'}</td>
-                    <td>{b.age}</td>
-                    <td>{b.gender}</td>
-                    <td>{b.tickets}</td>
+                    <td>{b.user_name?.trim() || 'N/A'}</td>
+                    <td>{b.user_email?.trim() || '—'}</td>
+                    <td>{b.age || '—'}</td>
+                    <td>{b.gender || '—'}</td>
+                    <td>{b.tickets || 0}</td>
                     <td>{b.event_name || '—'}</td>
                     <td>{b.event_time || '—'}</td>
                     <td>

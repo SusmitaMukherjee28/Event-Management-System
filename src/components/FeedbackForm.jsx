@@ -42,7 +42,12 @@ const FeedbackForm = () => {
   return (
     <div
       className="feedback-form-bg"
-      style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+      }}
     >
       <div className="feedback-form-wrapper">
         <div className="feedback-form-container">

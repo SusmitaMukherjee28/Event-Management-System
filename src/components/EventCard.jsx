@@ -19,7 +19,7 @@ const EventCard = ({ event, showBooking = true }) => {
         <p><strong>Date:</strong> {eventDate.toLocaleDateString()}</p>
         <p><strong>Time:</strong> {eventDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
         <p><strong>Location:</strong> {event.location}</p>
-        <p><strong>Type:</strong> {event.type}</p>
+       
 
         {showBooking && (
           !showForm ? (

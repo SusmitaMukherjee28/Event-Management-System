@@ -1,39 +1,86 @@
-/* Feedback list container */
-.feedback-list {
-  list-style: none;
-  padding: 0;
-  color: white; /* ✅ Make all feedback text white */
-}
-
-/* Individual feedback item */
-.feedback-item {
-  background-color: rgba(255, 255, 255, 0.1); /* optional: semi-transparent bg */
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  color: white; /* ✅ Ensure text inside each item is white */
-}
 .feedback-form-bg {
+  min-height: 100vh;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
-  position: relative;
-}
-
-.feedback-form-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4); /* ✅ dark overlay */
-  z-index: 0;
 }
 
 .feedback-form-container {
-  position: relative;
-  z-index: 1; /* Bring content above overlay */ 
+  background: rgba(0, 0, 0, 0.75);
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
   color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.feedback-form-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  font-weight: bold;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.feedback-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #00b386;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.feedback-form button:hover {
+  background-color: #009970;
+}
+
+.status-message {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.feedback-list {
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.feedback-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.delete-button {
+  margin-top: 0.5rem;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #a50000;
 }

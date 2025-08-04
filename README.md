@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+#  FunFusion - Event Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About
 
-## Available Scripts
+**FunFusion** is a full-stack event management system where users can explore and book events while administrators manage event listings, view bookings, and handle user feedback.
 
-In the project directory, you can run:
+**This project is built using:**
+-  **React.js + Html + CSS + Axios** for the frontend
+-  **Node.js + Express** for the backend API
+-  **MySQL** for the database
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### User Side
+- Browse upcoming events
+- Book tickets with name, age, gender, and quantity
+- View success confirmation after booking
+- Submit feedback after event
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Admin Side
+- Add new events (Tech, Music, Food, Art,Theatre)
+- View event list with total ticket stats
+- Manage all user bookings
+- View and delete user feedback
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Main API Endpoints
+### Events
 
-### `npm run build`
+| Method | Endpoint     | Description              |
+|--------|--------------|--------------------------|
+| GET    | `/events`    | Get all events           |
+| POST   | `/events`    | Add new event (admin)    |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###  Bookings
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Method | Endpoint     | Description              |
+|--------|--------------|--------------------------|
+| GET    | `/bookings`  | Get all bookings (admin) |
+| POST   | `/bookings`  | Book tickets (user)      |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###  Feedback
 
-### `npm run eject`
+| Method   | Endpoint          | Description                   |
+|----------|-------------------|-------------------------------|
+| GET      | `/feedback`       | Get all feedback (admin)      |
+| POST     | `/feedback`       | Submit feedback (user)        |
+| DELETE   | `/feedback/:id`   | Delete feedback by ID (admin) |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##  Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+_<img width="1920" height="1080" alt="Screenshot (388)" src="https://github.com/user-attachments/assets/c4edff9e-7de9-4bea-be62-f845d400eb14" />
+<img width="1920" height="1080" alt="Screenshot (380)" src="https://github.com/user-attachments/assets/1eecc3bf-d02f-489a-9eea-4fab90a9ffd1" />
+<img width="1920" height="1080" alt="Screenshot (382)" src="https://github.com/user-attachments/assets/a423eb10-ba6a-4da8-82bb-56816a7e13f9" />
+<img width="1920" height="1080" alt="Screenshot (389)" src="https://github.com/user-attachments/assets/ffe9d890-21f3-4a5a-a6c6-1cf5fbd31b2c" />
+<img width="1920" height="1080" alt="Screenshot (383)" src="https://github.com/user-attachments/assets/dd5c64fd-1d7a-4728-acd3-7e66469fa549" />
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##  Tech Stack
 
-### Code Splitting
+| Layer       | Tech Used             |
+|-------------|------------------------|
+| Frontend    | React.js, Html, CSS |
+| Backend     | Node.js, Express.js    |
+| Database    | MySQL                  |
+| Deployment  | Localhost / Your host  |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

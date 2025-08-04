@@ -1,9 +1,7 @@
-// src/pages/admin/AdminFeedback.jsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import backgroundImage from '../../assets/background.jpg';
-import '../../styles/AdminFeedback.css'; // Ensure this CSS file exists
+import '../../styles/AdminFeedback.css'; // Optional custom styles
 
 const AdminFeedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -20,18 +18,7 @@ const AdminFeedback = () => {
     };
 
     loadFeedbacks();
-  }, []);
-
-  const deleteFeedback = async (id) => {
-    if (window.confirm('Are you sure you want to delete this feedback?')) {
-      try {
-        await axios.delete(`${API_BASE}/api/feedback/${id}`);
-        setFeedbacks((prev) => prev.filter((fb) => fb.id !== id));
-      } catch (err) {
-        console.error('Error deleting feedback:', err);
-      }
-    }
-  };
+  }, [API_BASE]); // ✅ Added to fix the warning
 
   return (
     <div
@@ -42,27 +29,26 @@ const AdminFeedback = () => {
         backgroundPosition: 'center',
         minHeight: '100vh',
         padding: '2rem',
-        color: 'white', // ✅ Makes all text white
+        color: 'white',
       }}
     >
-      <div className="admin-feedback-container">
-        <h2 className="admin-feedback-title">📬 User Feedback (Admin Panel)</h2>
+      <div className="admin-feedback-container bg-white bg-opacity-90 p-8 rounded-xl shadow-xl max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold mb-6 text-center text-black">📬 User Feedback</h2>
         {feedbacks.length ? (
           feedbacks.map((fb) => (
-            <div key={fb.id} className="admin-feedback-card">
+            <div
+              key={fb.id}
+              className="bg-white text-black p-4 mb-4 rounded-lg border shadow-md"
+            >
               <strong>{fb.name}</strong> ({fb.email})
-              <p>{fb.feedback || fb.message}</p>
-              <small>
-                {new Date(fb.created_at?.replace(' ', 'T')).toLocaleString()}
+              <p className="mt-2">{fb.feedback || fb.message}</p>
+              <small className="text-gray-600">
+                {fb.created_at && new Date(fb.created_at.replace(' ', 'T')).toLocaleString()}
               </small>
-              <br />
-              <button className="delete-button" onClick={() => deleteFeedback(fb.id)}>
-                Delete
-              </button>
             </div>
           ))
         ) : (
-          <p className="admin-feedback-empty">No feedback available yet.</p>
+          <p className="text-center text-gray-700">No feedback available yet.</p>
         )}
       </div>
     </div>

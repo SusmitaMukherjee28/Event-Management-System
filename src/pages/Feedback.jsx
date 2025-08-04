@@ -1,7 +1,9 @@
+// src/pages/Feedback.jsx
+
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import backgroundImage from '../assets/background.jpg';
-import '../styles/FeedbackForm.css';
+import backgroundImage from '../assets/background.jpg'; // confetti background
+import '../styles/FeedbackForm.css'; // make sure this file exists
 
 const Feedback = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -20,7 +22,6 @@ const Feedback = () => {
       setFeedbacks(data);
     } catch (err) {
       console.error('Fetch error:', err);
-      setStatus('❌ Could not load feedback. Please try again later.');
     }
   }, [API_BASE]);
 
@@ -31,7 +32,7 @@ const Feedback = () => {
     const { name, email, message } = formData;
 
     if (!name.trim() || !email.trim() || !message.trim()) {
-      setStatus('⚠️ Please fill out all fields.');
+      setStatus('⚠ Please fill out all fields.');
       return;
     }
 
@@ -68,12 +69,9 @@ const Feedback = () => {
   }, [fetchFeedbacks]);
 
   return (
-    <div
-      className="feedback-form-bg"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    <div className="feedback-form-bg" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="feedback-form-container">
-        <h2 className="feedback-form-title">📬 Leave Your Feedback</h2>
+        <h2 className="feedback-form-title">Leave Your Feedback</h2>
         <form onSubmit={handleSubmit} className="feedback-form">
           <input
             type="text"
@@ -99,33 +97,29 @@ const Feedback = () => {
             rows="4"
             required
           />
-          <button type="submit" disabled={status === 'Submitting...'}>
-            Submit
-          </button>
+          <button type="submit">Submit</button>
           {status && <p className="status-message">{status}</p>}
         </form>
 
-        <h3 className="feedback-list-title">📝 All Feedback</h3>
-        <ul className="feedback-list">
-          {feedbacks.map((fb) => (
-            <li key={fb.id} className="feedback-item">
-              <strong>{fb.name}</strong> ({fb.email}): {fb.message}
-              <br />
-              <small>
-                {fb.created_at
-                  ? new Date(fb.created_at.replace(' ', 'T')).toLocaleString()
-                  : '📅 No timestamp available'}
-              </small>
-              <br />
-              <button
-                className="delete-button"
-                onClick={() => handleDelete(fb.id)}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+        {feedbacks.length > 0 && (
+          <ul className="feedback-list">
+            {feedbacks.map((fb) => (
+              <li key={fb.id} className="feedback-item">
+                <strong>{fb.name}</strong> ({fb.email}): {fb.message}
+                <br />
+                <small>
+                  {fb.created_at
+                    ? new Date(fb.created_at.replace(' ', 'T')).toLocaleString()
+                    : '📅 No timestamp available'}
+                </small>
+                <br />
+                <button className="delete-button" onClick={() => handleDelete(fb.id)}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

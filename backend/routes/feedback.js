@@ -1,6 +1,8 @@
-const express = require('express');
+const express = require('express'); 
 const router = express.Router();
 const db = require('../config/db');
+
+console.log('📦 feedback.js route file loaded');
 
 // 📨 POST feedback
 router.post('/', (req, res) => {
@@ -12,7 +14,10 @@ router.post('/', (req, res) => {
     return res.status(400).json({ error: 'Name, email, and message are required' });
   }
 
-  const query = 'INSERT INTO feedback_table (name, email, message) VALUES (?, ?, ?)';
+  const query = `
+    INSERT INTO feedback_table (name, email, message)
+    VALUES (?, ?, ?)
+  `;
 
   db.query(query, [name.trim(), email.trim(), message.trim()], (err, result) => {
     if (err) {
@@ -26,7 +31,10 @@ router.post('/', (req, res) => {
 
 // 📋 GET all feedback
 router.get('/', (req, res) => {
-  const query = 'SELECT * FROM feedback_table ORDER BY created_at DESC';
+  const query = `
+    SELECT * FROM feedback_table
+    ORDER BY created_at DESC
+  `;
 
   db.query(query, (err, results) => {
     if (err) {
@@ -35,26 +43,6 @@ router.get('/', (req, res) => {
     }
 
     res.status(200).json(results);
-  });
-});
-
-// ❌ DELETE feedback by ID
-router.delete('/:id', (req, res) => {
-  const feedbackId = req.params.id;
-
-  const query = 'DELETE FROM feedback_table WHERE id = ?';
-
-  db.query(query, [feedbackId], (err, result) => {
-    if (err) {
-      console.error('❌ Error deleting feedback:', err);
-      return res.status(500).json({ error: 'Database error while deleting feedback' });
-    }
-
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ error: 'Feedback not found' });
-    }
-
-    res.status(200).json({ message: '✅ Feedback deleted successfully' });
   });
 });
 
