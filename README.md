@@ -2,22 +2,22 @@
 
 A full stack web application that allows useres to explore,book events, secure payments while enabling admin control over event listing, booking and user's feedback.
 
-Tech Stack:-
+_Tech Stack:-_
 
-# Frontend
+_Frontend_
 HTML
 CSS
 React.js
 AOS
 
-# Backend
+_Backend_
 Node.js
 Express.js
 
-# Database
+_Database_
 MySQL
 
-Features Of the webapplications:-
+_Features Of the webapplications:-_
 1) User can browse upcoming festivals and events
 2) User can explore event details
 3) User can book events securely using QR code
